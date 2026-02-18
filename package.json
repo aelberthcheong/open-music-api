@@ -1,0 +1,38 @@
+{
+    "name": "open-music-v1",
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node ./src/server.js",
+        "dev": "cross-env nodemon ./src/server.js",
+        "test": "postman collection run postman/OpenMusicAPIV1Test.postman_collection.json -e postman/OpenMusicAPITest.postman_environment.json",
+
+        "migrate:create": "node-pg-migrate create",
+        "migrate:up": "node-pg-migrate up",
+        "migrate:down": "node-pg-migrate down",
+
+        "fmt": "prettier --write .",
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^1.0.1",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.6",
+        "cross-env": "^10.1.0",
+        "eslint": "^10.0.0",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.3.0",
+        "node-pg-migrate": "^8.0.4",
+        "nodemon": "^3.1.11",
+        "prettier": "^3.8.1"
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "dotenv": "^17.3.1",
+        "express": "^5.2.1",
+        "joi": "^18.0.2",
+        "nanoid": "^5.1.6",
+        "pg": "^8.18.0"
+    }
+}
