@@ -7,6 +7,7 @@
         "dev": "cross-env nodemon ./src/server.js",
         "test": "postman collection run postman/OpenMusicAPIV1Test.postman_collection.json -e postman/OpenMusicAPITest.postman_environment.json",
 
+        "migrate": "npm run migrate:up",
         "migrate:create": "node-pg-migrate create",
         "migrate:up": "node-pg-migrate up",
         "migrate:down": "node-pg-migrate down",
