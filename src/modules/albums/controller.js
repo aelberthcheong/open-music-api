@@ -1,5 +1,5 @@
 import ClientError from "../../shared/exceptions/index.js";
-import albumRepository from "./albums.repository.js";
+import albumRepository from "./repository.js";
 
 export async function createAlbum(req, res) {
     const { name, year } = req.body;

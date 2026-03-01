@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 
-import AlbumsRoutes from "./modules/albums/albums.routes.js";
-import SongsRoutes from "./modules/songs/songs.routes.js";
-import errorMiddleware from "./shared/middlewares/error.middleware.js";
+import AlbumsRoutes from "./modules/albums/routes.js";
+import SongsRoutes from "./modules/songs/routes.js";
+import errorMiddleware from "./shared/middlewares/error_middleware.js";
 
 const app = express();
 

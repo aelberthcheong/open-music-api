@@ -1,13 +1,8 @@
 import { Router } from "express";
-import {
-    createAlbum,
-    editAlbum,
-    getAlbum,
-    deleteAlbum,
-} from "./albums.controller.js";
+import { createAlbum, editAlbum, getAlbum, deleteAlbum } from "./controller.js";
 
-import { albumCreateSchema, albumUpdateSchema } from "./albums.schema.js";
-import { validatePayload } from "../../shared/middlewares/validate.middleware.js";
+import { albumCreateSchema, albumUpdateSchema } from "./schema.js";
+import { validatePayload } from "../../shared/middlewares/validate_middleware.js";
 
 const routes = Router();
 
