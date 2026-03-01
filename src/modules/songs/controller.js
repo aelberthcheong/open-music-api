@@ -1,5 +1,5 @@
 import ClientError from "../../shared/exceptions/index.js";
-import songRepository from "./songs.repository.js";
+import songRepository from "./repository.js";
 
 export async function createSong(req, res) {
     const { title, year, genre, performer, duration, albumId } = req.body;

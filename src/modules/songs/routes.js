@@ -5,16 +5,16 @@ import {
     getAllSong,
     editSong,
     deleteSong,
-} from "./songs.controller.js";
+} from "./controller.js";
 import {
     songCreateSchema,
     songUpdateSchema,
     songQuerySchema,
-} from "./songs.schema.js";
+} from "./schema.js";
 import {
     validatePayload,
     validateQuery,
-} from "../../shared/middlewares/validate.middleware.js";
+} from "../../shared/middlewares/validate_middleware.js";
 
 const routes = Router();
 
