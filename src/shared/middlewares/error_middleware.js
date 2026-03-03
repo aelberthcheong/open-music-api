@@ -1,4 +1,4 @@
-import ClientError from "../exceptions/index.js";
+import ClientError from "../exceptions/client-error.js";
 
 export default function errorMiddleware(err, _req, res, _next) {
     // handle client error

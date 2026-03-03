@@ -1,4 +1,4 @@
-import ClientError from "../../shared/exceptions/index.js";
+import ClientError from "../../shared/exceptions/client-error.js";
 import albumRepository from "./repository.js";
 
 export async function createAlbum(req, res) {

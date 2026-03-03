@@ -1,4 +1,4 @@
-import ClientError from "../../shared/exceptions/index.js";
+import ClientError from "../../shared/exceptions/client-error.js";
 import songRepository from "./repository.js";
 
 export async function createSong(req, res) {
