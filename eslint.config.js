@@ -16,7 +16,14 @@ export default defineConfig([
             // Terkadang variable perlu diabaikan e.g. express middleware, node-pg-migrate...
             // dikarenakan itu kita pastikan variable dapat diabaikan secara eksplisit dengan penambahan prefix '_'
             // behave sama persis dengan `deno lint`.
-            "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+            "no-unused-vars": [
+                "error",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_",
+                },
+            ],
         },
     },
     {
