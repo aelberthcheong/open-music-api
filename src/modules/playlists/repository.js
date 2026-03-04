@@ -47,7 +47,10 @@ class PlaylistRepositories {
             `SELECT 
                 playlists.id AS id, 
                 playlists.name AS name, 
-                users.username AS username
+                users.username AS username,
+                songs.id AS song_id,
+                songs.title,
+                songs.performer
             FROM playlists 
             INNER JOIN users ON playlists.owner = users.id 
             LEFT JOIN playlist_songs ON playlists.id = playlist_songs.playlist_id
@@ -58,6 +61,19 @@ class PlaylistRepositories {
         if (!rows.length) {
             return null;
         }
+
+        return {
+            id: rows[0].id,
+            name: rows[0].name,
+            username: rows[0].username,
+            songs: rows
+                .filter((row) => row !== null)
+                .map((row) => ({
+                    id: row.song_id,
+                    title: row.title,
+                    performer: row.performer,
+                })),
+        };
     }
 
     async deleteSongfromPlaylist(playlistId, songId) {

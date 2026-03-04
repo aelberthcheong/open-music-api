@@ -66,6 +66,17 @@ export async function addSongToPlaylist(req, res) {
 
 export async function getSongsInPlaylist(req, res) {
     const { id: playlistId } = req.params;
+    const { sub: userId } = req.user;
+
+    const playlist = await PlaylistRepositories.getPlaylistById(playlistId);
+    if (!playlist) {
+        throw ClientError.notFound("playlist not found");
+    }
+
+    if (playlist.owner !== userId) {
+        throw ClientError.forbidden("you are not the owner of this playlist");
+    }
+
     const rows = await PlaylistRepositories.getSongsInPlaylist(playlistId);
 
     res.status(200).json({
