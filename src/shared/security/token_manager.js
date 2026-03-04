@@ -4,7 +4,7 @@ import ClientError from "../exceptions/client-error.js";
 
 export function generateAccessToken(payload) {
     return jwt.sign(payload, process.env.ACCESS_TOKEN_KEY, {
-        expiresIn: process.env.ACCESS_TOKEN_AGE,
+        expiresIn: parseInt(process.env.ACCESS_TOKEN_AGE),
     });
 }
 
