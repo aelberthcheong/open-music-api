@@ -24,27 +24,29 @@ class UserRepository {
         return result.rows[0];
     }
 
-    async verifyUserCredential(username, password) {
+    async verifyUserCredential({ username, password }) {
         const user = await this.getUserByUsername(username);
-        if (user) {
+        if (!user) {
             throw ClientError.unauthorized("username does not exist");
         }
 
-        const match = bcrypt.compare(user.password, password);
+        const match = await bcrypt.compare(password, user.password);
         if (!match) {
-            throw ClientError.unauthorized("username does not exist");
+            throw ClientError.unauthorized("wrong password");
         }
+
+        return user.id;
     }
 
     async getUserByUsername(username) {
         // average time O(n/2) => O(n)
         // optimal nya, buat index (b-tree) agar average time O(log n)
         const pq = {
-            text: `SELECT * FROM users WHERE username LIKE $1 LIMIT 1`,
-            values: [`%${username}%`],
+            text: `SELECT * FROM users WHERE username = $1 LIMIT 1`,
+            values: [username],
         };
-        const result = await pool.query(pq);
-        return result.rows[0];
+        const { rows } = await pool.query(pq);
+        return rows[0];
     }
 }
 

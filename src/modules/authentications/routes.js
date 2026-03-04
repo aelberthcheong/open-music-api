@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {} from "./controller.js";
+import { login, logout, refreshAccessToken } from "./controller.js";
 import {
     createAuthSchema,
     renewAccessTokenSchema,
@@ -9,8 +9,12 @@ import { validatePayload } from "../../shared/middlewares/validate_middleware.js
 
 const routes = Router();
 
-routes.post("/authentications", validatePayload(createAuthSchema));
-routes.put("/authentications", validatePayload(renewAccessTokenSchema));
-routes.delete("/authentications", validatePayload(deleteAuthSchema));
+routes.post("/authentications", validatePayload(createAuthSchema), login);
+routes.put(
+    "/authentications",
+    validatePayload(renewAccessTokenSchema),
+    refreshAccessToken,
+);
+routes.delete("/authentications", validatePayload(deleteAuthSchema), logout);
 
 export default routes;
