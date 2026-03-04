@@ -9,7 +9,13 @@ export const shorthands = undefined;
  * @returns {Promise<void> | void}
  */
 export const up = (pgm) => {
-    pgm.createTable("authentications", {});
+    // buat jadi primary key, karena authentications table supposed to behave sebagai set
+    pgm.createTable("authentications", {
+        refresh_token: {
+            type: "TEXT",
+            primaryKey: true,
+        },
+    });
 };
 
 /**
