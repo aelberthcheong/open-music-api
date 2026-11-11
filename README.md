@@ -1,1 +1,1 @@
-My solution for Dicoding's Proyek OpenMusic API submission
+Dicoding's OpenMusic API submission
